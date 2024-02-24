@@ -4,8 +4,9 @@ var roleHarvester = {
     run: function(creep) {
         if(creep.store.getFreeCapacity() > 0) {
             var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+            var targetLocationIndex = Math.floor(Math.random() * targets.length);
+            if(creep.harvest(sources[targetLocationIndex]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[targetLocationIndex], {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         }
         else {
@@ -18,9 +19,8 @@ var roleHarvester = {
                 }
             });
             if(targets.length > 0) {
-                targetLocationIndex = Math.floor(Math.random() * targets.length);
-                if(creep.transfer(targets[targetLocationIndex], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[targetLocationIndex], {visualizePathStyle: {stroke: '#ffffff'}});
+                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
         }
