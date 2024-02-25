@@ -9,24 +9,22 @@ module.exports.loop = function () {
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
     console.log(JSON.stringify(groups));
-    if (groups['upgrader']) {
-        for (creep in groups[upgrader].length) {
-            creep.memory.upgradeAvailable = false;
-        }
+    for (creep in groups[upgrader]?.length) {
+        creep.memory.upgradeAvailable = false;
     }
 
-    if (groups['harvester_alpha'].length < 3) {
+    if (groups['harvester_alpha']?.length < 3) {
         var sourceTarget = Math.floor(Math.random() * sources.length);
         var newName = sourceTarget + 'Harvester_alpha' + Game.time;
         console.log('Spawning new harvester: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
             {memory: {role: 'harvester_alpha', sourceTarget: sourceTarget}});        
-    } else if (groups['upgrader'].length < 1) {
+    } else if (groups['upgrader']?.length < 1) {
         var newName = 'Upgrader' + Game.time;
         console.log('Spawning new upgrader: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([CARRY,CARRY,MOVE], newName, 
             {memory: {role: 'upgrader', upgradeAvailable: false}});        
-    } else if (groups['builder'].length < 1) {
+    } else if (groups['builder']?.length < 1) {
         var newName = 'Builder' + Game.time;
         console.log('Spawning new builder: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
