@@ -61,8 +61,8 @@ module.exports.loop = function () {
             roleHarvester_alpha.run(creep);
         }
         if (creep.memory.role == 'upgrader') {
-            console.log('# type of creep: '+ groups.length);
-            if (groups.length >= 3) {
+            console.log('# of creep: '+ Object.keys(Game.creeps).length);
+            if (Object.keys(Game.creeps).length >= 5) {
                 creep.memory.upgradeAvailable = true;
             } else {
                 creep.memory.upgradeAvailable = false;
