@@ -11,7 +11,7 @@ module.exports.loop = function () {
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
 
-    if (harvesters.length < 2) {
+    if (harvesters.length < 3) {
         var sourceTarget = Math.floor(Math.random() * sources.length);
         var newName = sourceTarget + 'Harvester_alpha' + Game.time;
         console.log('Spawning new harvester: ' + newName);
