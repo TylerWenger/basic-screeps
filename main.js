@@ -32,7 +32,7 @@ module.exports.loop = function () {
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
             {memory: {role: 'builder'}});        
     } else {
-        for (creep in groups['upgrader'].length) {
+        for (creep in groups['upgrader']) {
             creep.memory.upgradeAvailable = true;
         }
     }
