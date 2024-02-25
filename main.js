@@ -10,10 +10,11 @@ module.exports.loop = function () {
     var builder = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
+
     if (harvesters.length < 2) {
-        var newName = 'Harvester_alpha' + Game.time;
-        console.log('Spawning new harvester: ' + newName);
         var sourceTarget = Math.floor(Math.random() * sources.length);
+        var newName = sourceTarget + 'Harvester_alpha' + Game.time;
+        console.log('Spawning new harvester: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
             {memory: {role: 'harvester_alpha', sourceTarget: sourceTarget}});        
     } else if (upgrader.length < 1) {
