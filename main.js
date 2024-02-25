@@ -67,7 +67,7 @@ module.exports.loop = function () {
             } else {
                 creep.memory.upgradeAvailable = false;
             }
-            console.log(JSON.stringify(creep));
+            console.log(JSON.stringify(creep.memory));
             roleUpgrader.run(creep);
         }
         if (creep.memory.role == 'builder') {
