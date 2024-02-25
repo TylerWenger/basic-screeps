@@ -9,11 +9,6 @@ module.exports.loop = function () {
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
     console.log(JSON.stringify(groups));
-    if (groups['upgrader']) {
-        for (creep in groups['upgrader']) {
-            creep.memory.upgradeAvailable = false;
-        }
-    }
 
     if (!groups['harvester_alpha'] || groups['harvester_alpha'].length < 3) {
         var sourceTarget = Math.floor(Math.random() * sources.length);
@@ -31,10 +26,6 @@ module.exports.loop = function () {
         console.log('Spawning new builder: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
             {memory: {role: 'builder'}});        
-    } else {
-        for (creep in groups['upgrader']) {
-            creep.memory.upgradeAvailable = true;
-        }
     }
     
     if (Game.spawns['Spawn1'].spawning) { 
@@ -70,6 +61,11 @@ module.exports.loop = function () {
             roleHarvester_alpha.run(creep);
         }
         if (creep.memory.role == 'upgrader') {
+            if (Game.creeps.length >= 5) {
+                creep.memory.upgradeAvailable = true;
+            } else {
+                creep.memory.upgradeAvailable = false;
+            }
             roleUpgrader.run(creep);
         }
         if (creep.memory.role == 'builder') {
