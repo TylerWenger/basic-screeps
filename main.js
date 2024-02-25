@@ -9,8 +9,10 @@ module.exports.loop = function () {
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
     console.log(JSON.stringify(groups));
-    for (creep in groups[upgrader]?.length) {
-        creep.memory.upgradeAvailable = false;
+    if (groups['upgrader']) {
+        for (creep in groups['upgrader'].length) {
+            creep.memory.upgradeAvailable = false;
+        }
     }
 
     if (groups['harvester_alpha']?.length < 3) {
