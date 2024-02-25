@@ -8,6 +8,7 @@ module.exports.loop = function () {
     var groups = _.groupBy(Game.creeps, (c) => { return c.memory.role; });
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
+    console.log(groups);
     if (groups[roleUpgrader]) {
         for (creep in groups[upgrader].length) {
             creep.memory.upgradeAvailable = false;
