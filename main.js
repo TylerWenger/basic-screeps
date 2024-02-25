@@ -8,7 +8,7 @@ module.exports.loop = function () {
     var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester_alpha');
     var upgrader = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var builder = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-    var sources = Game.spwans['Spawn1'].room.find(FIND_SOURCES);
+    var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
     if (harvesters.length < 2) {
         var newName = 'Harvester_alpha' + Game.time;
