@@ -8,11 +8,13 @@ module.exports.loop = function () {
     var groups = _.groupBy(Game.creeps, (c) => { return c.memory.role; });
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
-    for (creep in groups.upgrader.length) {
-        creep.memory.upgradeAvailable = false;
+    if (groups[upgrader]) {
+        for (creep in groups[upgrader].length) {
+            creep.memory.upgradeAvailable = false;
+        }
     }
 
-    if (groups.harvester_alpha.length < 3) {
+    if (groups[harvester_alpha].length < 3) {
         var sourceTarget = Math.floor(Math.random() * sources.length);
         var newName = sourceTarget + 'Harvester_alpha' + Game.time;
         console.log('Spawning new harvester: ' + newName);
