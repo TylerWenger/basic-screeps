@@ -19,12 +19,12 @@ module.exports.loop = function () {
     } else if (!groups['upgrader'] || groups['upgrader'].length < 1) {
         var newName = 'Upgrader' + Game.time;
         console.log('Spawning new upgrader: ' + newName);
-        Game.spawns['Spawn1'].spawnCreep([CARRY,CARRY,MOVE], newName, 
+        Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
             {memory: {role: 'upgrader', upgradeAvailable: false}});        
     } else if (!groups['builder'] || groups['builder'].length < 1) {
         var newName = 'Builder' + Game.time;
         console.log('Spawning new builder: ' + newName);
-        Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
+        Game.spawns['Spawn1'].spawnCreep([CARRY,CARRY,MOVE], newName, 
             {memory: {role: 'builder'}});        
     }
     
@@ -63,9 +63,11 @@ module.exports.loop = function () {
         if (creep.memory.role == 'upgrader') {
             if (Game.creeps.length >= 5) {
                 creep.memory.upgradeAvailable = true;
+                console
             } else {
                 creep.memory.upgradeAvailable = false;
             }
+            console.log(JSON.stringify(creep));
             roleUpgrader.run(creep);
         }
         if (creep.memory.role == 'builder') {
