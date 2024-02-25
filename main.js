@@ -10,7 +10,7 @@ module.exports.loop = function () {
 
     console.log(JSON.stringify(groups));
     if (groups['upgrader']) {
-        for (creep in groups['upgrader'].length) {
+        for (creep in groups['upgrader']) {
             creep.memory.upgradeAvailable = false;
         }
     }
