@@ -8,7 +8,7 @@ module.exports.loop = function () {
     var groups = _.groupBy(Game.creeps, (c) => { return c.memory.role; });
     var sources = Game.spawns['Spawn1'].room.find(FIND_SOURCES);
 
-    console.log(JSON.stringify(groups));
+    // console.log(JSON.stringify(groups));
 
     if (!groups['harvester_alpha'] || groups['harvester_alpha'].length < 3) {
         var sourceTarget = Math.floor(Math.random() * sources.length);
@@ -61,13 +61,13 @@ module.exports.loop = function () {
             roleHarvester_alpha.run(creep);
         }
         if (creep.memory.role == 'upgrader') {
-            if (Game.creeps.length >= 5) {
+            console.log('# creeps: '+Game.creeps.length);
+            if (Game.creeps.length >= 4) {
                 creep.memory.upgradeAvailable = true;
-                console
             } else {
                 creep.memory.upgradeAvailable = false;
             }
-            console.log(JSON.stringify(creep.memory));
+            // console.log(JSON.stringify(creep.memory));
             roleUpgrader.run(creep);
         }
         if (creep.memory.role == 'builder') {
